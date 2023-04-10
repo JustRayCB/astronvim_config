@@ -1,0 +1,29 @@
+<leader>          Allow you to see all the mappings
+<leader>ff        Open telescope to find for files
+<leader>fo        Open telescope to find most recents files
+<leader>fw/W      Open telescope in scrap mode to find all occurences in files
+<leader>fc        Find in files for the word under the cursor 
+<leader>/         Comment the current line
+<leader>n         Open a new buffer
+<leader>c         Close the current buffer
+]b                Go to the buffer on the right
+[b                Go to the buffer on the left
+<leader>e         Open neotree
+?                 Help for neotree
+<leader>\         Horizontal split
+<leader>|         Vertical split
+<leader>g         See git mappings
+< and >           To navigate in the neo trees tabs
+<leader>lD        To see all diagnostics of the code
+<leader>gl        To see the full error msg and gl to jump into the error window
+]d                Next error
+[d                Previous error
+<leader>lr        To rename variables
+<leader>lf        To format the buffer
+<leader>la        Toggle code action ??
+F7                To toggle the floating terminal
+<leader>Ss        Save a session
+<leader>S.        Restore previous session
+<leader>tp        Toggle Python Terminal
+<leader>bc        Close all buffer but not the current
+<leader>bb        Select buffer from tabline
