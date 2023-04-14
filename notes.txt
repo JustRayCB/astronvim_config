@@ -27,3 +27,5 @@ F7                To toggle the floating terminal
 <leader>tp        Toggle Python Terminal
 <leader>bc        Close all buffer but not the current
 <leader>bb        Select buffer from tabline
+
+

@@ -38,6 +38,34 @@ return {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
+    -- ["<leader>ff"] = {
+    --   function()
+    --     require("telescope.builtin").find_files {
+    --       prompt_title = "Fichiers",
+    --       -- file_ignore_patterns = { "node_modules" },
+    --       attach_mappings = function(_, map)
+    --         map("i", "<CR>", function()
+    --           local picker = vim.fn.bufnr()
+    --           local selection = require("telescope.actions.state").get_selected_entry()
+    --           if vim.fn.filereadable(selection.path) == 1 then
+    --             vim.notify "Fichier existant"
+    --             vim.cmd("edit " .. selection.path)
+    --           else
+    --             vim.notify "Fichier non existant"
+    --             local response = vim.fn.input("Créer '" .. selection.path .. "' ? (y/n) ")
+    --             if response == "y" then
+    --               vim.fn.writefile({}, selection.path)
+    --               vim.cmd("edit " .. selection.path)
+    --             end
+    --           end
+    --           require("telescope.actions").close(picker)
+    --         end)
+    --         return true
+    --       end,
+    --     }
+    --   end,
+    --   desc = "Find files",
+    -- },
     ["<leader><tab><tab>"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
@@ -65,6 +93,37 @@ return {
       desc = "Comment line",
     },
     ["<leader><leader>t"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+    ["<c-c>"] = { "y", desc = "Copy to clipboard" },
+    ["a"] = { "<c-y>", desc = "Move the window one line up" },
+    ["f"] = { "<c-e>", desc = "Move the window one line to the bottom" },
+    ["m"] = { "w", desc = "one word to the left" },
+    ["<leader><leader>="] = {
+      "<cmd>vsp | Telescope find_files<cr>",
+      desc = "Open a split tab and choose file with telescope",
+    },
+    ["<leader><leader>-"] = {
+      "<cmd>sp | Telescope find_files<cr>",
+      desc = "Open a split tab and choose file with telescope",
+    },
+    ["<leader><leader>g"] = { "<cmd>vsp | Telescope git_files<cr>", desc = "Open split pane with telescope git" },
+    ["<F5>"] = { ":call vimspector#Launch()<cr>", desc = "debug session" },
+    ["<leader><leader>w"] = {
+      function()
+        require("telescope.builtin").find_files {
+          prompt_title = "Fichiers",
+          attach_mappings = function(_, map)
+            map("i", "<CR>", function()
+              local picker = vim.fn.bufnr()
+              local selection = require("telescope.actions.state").get_selected_entry()
+              vim.fn.execute("silent !wslview " .. selection.path)
+              require("telescope.actions").close(picker)
+            end)
+            return true
+          end,
+        }
+      end,
+      desc = "Open file with wslview",
+    },
   },
   -- Terminal mode
   t = {
@@ -79,6 +138,11 @@ return {
       "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
       desc = "Toggle comment line",
     },
+    ["y"] = { "ygv<esc>", desc = "Make the cursor not move after yank" },
+    ["<c-c>"] = { "y", desc = "Copy to clipboard" },
+    ["m"] = { "w", desc = "one word to the left" },
+    ["<"] = { "<gv^", desc = "Keep visual mode after Indent left" },
+    [">"] = { ">gv^", desc = "Keep visual mode after Indent right" },
   },
   i = {},
 }
