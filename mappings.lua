@@ -38,34 +38,43 @@ return {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
-    -- ["<leader>ff"] = {
-    --   function()
-    --     require("telescope.builtin").find_files {
-    --       prompt_title = "Fichiers",
-    --       -- file_ignore_patterns = { "node_modules" },
-    --       attach_mappings = function(_, map)
-    --         map("i", "<CR>", function()
-    --           local picker = vim.fn.bufnr()
-    --           local selection = require("telescope.actions.state").get_selected_entry()
-    --           if vim.fn.filereadable(selection.path) == 1 then
-    --             vim.notify "Fichier existant"
-    --             vim.cmd("edit " .. selection.path)
-    --           else
-    --             vim.notify "Fichier non existant"
-    --             local response = vim.fn.input("Créer '" .. selection.path .. "' ? (y/n) ")
-    --             if response == "y" then
-    --               vim.fn.writefile({}, selection.path)
-    --               vim.cmd("edit " .. selection.path)
-    --             end
-    --           end
-    --           require("telescope.actions").close(picker)
-    --         end)
-    --         return true
-    --       end,
-    --     }
-    --   end,
-    --   desc = "Find files",
-    -- },
+    ["<leader>ff"] = {
+      function()
+        require("telescope.builtin").find_files {
+          prompt_title = "Fichiers",
+          -- file_ignore_patterns = { "node_modules" },
+          attach_mappings = function(_, map)
+            map("i", "<CR>", function(prompt_bufnr)
+              local picker = vim.fn.bufnr()
+              local selection = require("telescope.actions.state").get_selected_entry()
+              if selection ~= nil and vim.fn.filereadable(selection.path) == 1 then
+                vim.notify "Fichier existant"
+                require("telescope.actions").file_edit(picker)
+              else
+                vim.notify "Fichier non existant"
+                vim.notify("Current directory: " .. vim.fn.getcwd())
+                vim.cmd "lcd %:p:h"
+                local current_picker = require("telescope.actions.state").get_current_picker(picker)
+                local prompt = current_picker:_get_prompt()
+                require("telescope.actions").close(picker)
+                local cwd = vim.fn.getcwd()
+                -- vim.notify("nom prompt : " .. prompt)
+                local path = cwd .. "/" .. prompt
+                local parent_dir = vim.fn.fnamemodify(path, ":h")
+                if vim.fn.isdirectory(parent_dir) == 0 then
+                  vim.notify("Création du dossier " .. parent_dir)
+                  vim.fn.mkdir(parent_dir, "p")
+                end
+                vim.api.nvim_exec(":edit " .. cwd .. "/" .. prompt, false)
+              end
+              -- require("telescope.actions").close(picker)
+            end)
+            return true
+          end,
+        }
+      end,
+      desc = "Find files, open it if it exits, and create it if it doesn't (directory included)",
+    },
     ["<leader><tab><tab>"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
