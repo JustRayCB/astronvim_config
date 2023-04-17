@@ -27,8 +27,8 @@ return {
         },
       },
       sources = cmp.config.sources {
+        { name = "luasnip", priority = 1750 },
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
         { name = "pandoc_references", priority = 725 },
         { name = "latex_symbols", priority = 700 },
         { name = "emoji", priority = 700 },

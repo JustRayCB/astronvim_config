@@ -27,5 +27,8 @@ F7                To toggle the floating terminal
 <leader>tp        Toggle Python Terminal
 <leader>bc        Close all buffer but not the current
 <leader>bb        Select buffer from tabline
-
-
+<b | >b           To move buffer <b to left and >b to right
+zc                Close the current fold
+zo                Open the current fold
+za                Toggle the current fold
+zp                See inside the current fold

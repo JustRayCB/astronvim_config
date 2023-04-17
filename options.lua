@@ -21,10 +21,13 @@ return {
     ai = true,
     filetype = "on",
     colorcolumn = "100",
-    undodir = "/home/cbr/.config/nvim/tmp/undodir",
     undofile = true,
-    backupdir = "/home/cbr/.config/nvim/tmp/backupdir",
-    directory = "/home/cbr/.config/nvim/tmp/swap",
+    undodir = "/home/cbr/.local/share/nvim/tmp/undodir", -- have to do like that because of the ~
+    backupdir = "/home/cbr/.local/share/nvim/tmp/backupdir",
+    directory = "/home/cbr/.local/share/nvim/tmp/swap",
+    autochdir = true, -- change directory to current file
+    -- linebreak = false;
+    preserveindent = false,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
@@ -38,6 +41,7 @@ return {
     vimspector_enable_mappings = "HUMAN",
     vimspector_code_minwidth = 70,
     vimspector_sidebar_width = 35,
+    load_doxygen_syntax = 1,
   },
 }
 -- If you need more control, you can use the function()...end notation

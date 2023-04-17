@@ -118,6 +118,14 @@ return {
     ["<F5>"] = { ":call vimspector#Launch()<cr>", desc = "debug session" },
     ["<leader><leader>w"] = {
       function()
+        -- vim.cmd "cd $(git rev-parse —show-toplevel)"
+        local client = vim.lsp.get_active_clients()[1]
+        if client ~= nil then
+          -- vim.notify("Current directory: " .. client.config.root_dir)
+          vim.cmd("cd " .. client.config.root_dir)
+        else
+          vim.cmd("cd " .. vim.fn.getcwd())
+        end
         require("telescope.builtin").find_files {
           prompt_title = "Fichiers",
           attach_mappings = function(_, map)
@@ -133,13 +141,16 @@ return {
       end,
       desc = "Open file with wslview",
     },
+    ["<leader>fu"] = { "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope for all functions" },
   },
+
   -- Terminal mode
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
     [":q"] = { "exit()" },
   },
+
   -- Visual mode
   v = {
     ["<leader>c"] = false,
