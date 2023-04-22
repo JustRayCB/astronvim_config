@@ -9,7 +9,8 @@ return {
     vim.g.tex_flavor = "latex"
     vim.g.Tex_DefaultTargetFormat = "pdf"
     vim.g.Tex_ViewRule_pdf='sumatraPDF'
-    vim.g.vimtex_quickfix_mode = 0
+    vim.g.vimtex_quickfix_mode = 1
+    vim.g.vimtex_compiler_silent = true
     -- let g:vimtex_compiler_latexmk = {
     --         \ 'build_dir' : '',
     --         \ 'callback' : 1,
