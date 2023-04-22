@@ -163,5 +163,22 @@ return {
       pattern = "*.tex",
       command = "VimtexCompile",
     })
+    vim.api.nvim_create_autocmd("VimEnter *.md",{
+      -- autocmd VimEnter *.md,*.markdown,*.mdown,*.mkdn,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text,*.Rmd :MarkdownPreview
+      desc = "Compile tex file on opening",
+      pattern = {"*.md", "*.markdown", "*.mdown", "*.mkdn", "*.mkd", "*.mdwn", "*.mdtxt", "*.mdtext", "*.text", "*.Rmd"},
+      command = "MarkdownPreview",
+    })
+    vim.api.nvim_create_autocmd("VimEnter *.uml",{
+      desc = "Preview plantuml file on opening",
+      pattern = {"*.uml", "*.plantuml", "*.puml"},
+      command = "silent! PlantumlOpen",
+    })
+    
+    vim.api.nvim_create_autocmd("VimEnter *.uml",{
+      desc = "Preview plantuml file on opening",
+      pattern = {"*.uml", "*.plantuml", "*.puml"},
+      command = "set ft=plantuml",
+    })
   end,
 }
