@@ -19,6 +19,9 @@ return {
   },
   -- Set colorscheme to use
   colorscheme = "tokyonight",
+  -- colorscheme = "catppuccin",
+  -- colorscheme = "oxocarbon",
+  -- colorscheme = "rose-pine",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -40,8 +43,9 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         "lua_ls", -- Have to disable it because if I save before the workspace is loaded there is a conflict
-        -- "null-ls",
-        "jdtls", -- Otherwise ther is a conflict with clang_format
+        "null-ls",
+        -- "jdtls", -- Otherwise ther is a conflict with clang_format
+        -- "clang_format"
       },
       timeout_ms = 3200, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -152,6 +156,12 @@ return {
       desc = "Load java linter when new file",
       pattern = "*.java",
       command = "execute 'normal! i' | write | edit | execute 'normal! gg=G'",
+    })
+
+    vim.api.nvim_create_autocmd("VimEnter *.tex",{
+      desc = "Compile tex file on opening",
+      pattern = "*.tex",
+      command = "VimtexCompile",
     })
   end,
 }

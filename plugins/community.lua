@@ -8,6 +8,9 @@ return {
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   -- { import = "astrocommunity.pack.typescript"}
   { import = "astrocommunity.colorscheme.tokyonight" },
+  { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.oxocarbon" },
+  { import = "astrocommunity.colorscheme.rose-pine" },
   -- { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.bash" },
