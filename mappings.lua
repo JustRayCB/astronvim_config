@@ -142,7 +142,8 @@ return {
       desc = "Open file with wslview",
     },
     ["<leader>fu"] = { "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope for all functions" },
-    ["<leader>sa"] = {"<cmd>au! CursorHoldI,CursorHold,BufLeave <buffer> silent w<CR>", desc = "Autosave"},
+    ["<leader>sa"] = { "<cmd>au! CursorHoldI,CursorHold,BufLeave <buffer> silent w<CR>", desc = "Autosave" },
+    ["<F2>"] = { "<cmd>OverseerRun<cr>", desc = "Run a file" },
   },
 
   -- Terminal mode

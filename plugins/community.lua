@@ -14,7 +14,7 @@ return {
   -- { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.bash" },
-  { import = "astrocommunity.code-runner.overseer-nvim" },
+  -- { import = "astrocommunity.code-runner.overseer-nvim" },
 
   { import = "astrocommunity.media.presence-nvim", enable = false },
   -- {

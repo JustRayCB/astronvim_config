@@ -28,16 +28,6 @@ return {
     },
   },
   {
-    "stevearc/overseer.nvim",
-    config = function()
-      require("overseer").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end,
-  },
-  {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     event = { "User AstroFile" },

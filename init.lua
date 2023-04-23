@@ -2,16 +2,16 @@ return {
   -- Configure AstroNvim updates
   -- FIX: TELESCOPE DOES NOT WORK WITH PYTHON3.11
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly",    -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false, -- automatically quit the current session after a successful update
-    remotes = { -- easily add new remotes to track
+    auto_quit = false,     -- automatically quit the current session after a successful update
+    remotes = {            -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -32,7 +32,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -42,9 +42,9 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        "lua_ls", -- Have to disable it because if I save before the workspace is loaded there is a conflict
+        "lua_ls",  -- Have to disable it because if I save before the workspace is loaded there is a conflict
         "null-ls",
-        -- "jdtls", -- Otherwise ther is a conflict with clang_format
+        -- "jdtls",   -- Otherwise ther is a conflict with clang_format
         -- "clang_format"
       },
       timeout_ms = 3200, -- default format timeout
@@ -109,43 +109,20 @@ return {
     })
 
     vim.api.nvim_create_augroup("Execute", {})
-    vim.api.nvim_create_autocmd("BufEnter *.py", {
-      desc = "Exectue python program",
-      pattern = "*.py",
-      group = "Execute",
-      command = "map <buffer> <F2> :w <CR>: exec '!python3' shellescape(@%, 1) <CR>",
-      -- command = function()
-      -- vim.api.nvim_buf_set_keymap(0, "n", "<F2>", ":w <CR>: exec '!python3' shellescape(@%, 1) <CR>", { noremap = true, silent = true })
-      -- vim.api.nvim_buf_set_keymap(0, "n", "<F2>", ":w <CR>: exec '!python3' % <CR>", { noremap = true, silent = true }
-      --   vim.api.nvim_buf_set_keymap(
-      --     0,
-      --     "n",
-      --     "<F2>",
-      --     ":w <CR>: exec '!python3' % <CR>",
-      --     { noremap = true, silent = true }
-      --   )
-      -- end,
-    })
+    -- vim.api.nvim_create_autocmd("BufEnter *.py", {
+    --   desc = "Exectue python program",
+    --   pattern = "*.py",
+    --   group = "Execute",
+    --   command = "map <buffer> <F2> :w <CR>: exec '!python3' shellescape(@%, 1) <CR>",
+    -- })
 
-    vim.api.nvim_create_autocmd("BufEnter *.cpp", {
-      desc = "Exectue cpp program",
-      pattern = "*.cpp",
-      group = "Execute",
-      -- command = "map <buffer> <F2> :w <CR>: exec '!python3' shellescape(@%, 1) <CR>",
-      command = "map <buffer> <F2> :w <CR> :!g++ -std=c++20 -Wall -Wextra -pedantic % -o %< && ./%<<CR>",
-      -- command = function()
-      -- vim.api.nvim_buf_set_keymap(0, "n", "<F2>", ":w <CR>: exec '!python3' shellescape(@%, 1) <CR>", { noremap = true, silent = true })
-      -- vim.api.nvim_buf_set_keymap(0, "n", "<F2>", ":w <CR>: exec '!python3' % <CR>", { noremap = true, silent = true }
-      --   vim.api.nvim_buf_set_keymap(
-      --     0,
-      --     "n",
-      --     "<F2>",
-      --     ":w <CR>: exec '!python3' % <CR>",
-      --     { noremap = true, silent = true }
-      --   )
-      -- end,
-    })
-
+    -- vim.api.nvim_create_autocmd("BufEnter *.cpp", {
+    --   desc = "Exectue cpp program",
+    --   pattern = "*.cpp",
+    --   group = "Execute",
+    --   command = "map <buffer> <F2> :w <CR> :!g++ -std=c++20 -Wall -Wextra -pedantic % -o %< && ./%<<CR>",
+    -- })
+    --
     vim.api.nvim_create_autocmd("User AstroFile", {
       desc = "no auto comment after pressing o",
       pattern = "*",
@@ -158,26 +135,37 @@ return {
       command = "execute 'normal! i' | write | edit | execute 'normal! gg=G'",
     })
 
-    vim.api.nvim_create_autocmd("VimEnter *.tex",{
+    vim.api.nvim_create_autocmd("VimEnter *.tex", {
       desc = "Compile tex file on opening",
       pattern = "*.tex",
       command = "VimtexCompile",
     })
-    vim.api.nvim_create_autocmd("VimEnter *.md",{
+    vim.api.nvim_create_autocmd("VimEnter *.md", {
       -- autocmd VimEnter *.md,*.markdown,*.mdown,*.mkdn,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text,*.Rmd :MarkdownPreview
       desc = "Compile tex file on opening",
-      pattern = {"*.md", "*.markdown", "*.mdown", "*.mkdn", "*.mkd", "*.mdwn", "*.mdtxt", "*.mdtext", "*.text", "*.Rmd"},
+      pattern = {
+        "*.md",
+        "*.markdown",
+        "*.mdown",
+        "*.mkdn",
+        "*.mkd",
+        "*.mdwn",
+        "*.mdtxt",
+        "*.mdtext",
+        "*.text",
+        "*.Rmd",
+      },
       command = "MarkdownPreview",
     })
-    vim.api.nvim_create_autocmd("VimEnter *.uml",{
+    vim.api.nvim_create_autocmd("VimEnter *.uml", {
       desc = "Preview plantuml file on opening",
-      pattern = {"*.uml", "*.plantuml", "*.puml"},
+      pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "silent! PlantumlOpen",
     })
-    
-    vim.api.nvim_create_autocmd("VimEnter *.uml",{
+
+    vim.api.nvim_create_autocmd("VimEnter *.uml", {
       desc = "Preview plantuml file on opening",
-      pattern = {"*.uml", "*.plantuml", "*.puml"},
+      pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "set ft=plantuml",
     })
   end,
