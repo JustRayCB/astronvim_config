@@ -29,7 +29,7 @@ return {
       },
       mapping = {
         ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<C-J>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, -- to fix the c-j not working since update 2/05/23
+        ["<C-J>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, -- to fix the c-j not working since update 2/05/23
         -- ["<c-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         -- ["<C-Space>"] = cmp.mapping.complete(),
         -- ["<C-e>"] = cmp.mapping.close(),
