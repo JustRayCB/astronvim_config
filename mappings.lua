@@ -150,7 +150,6 @@ return {
   t = {
     -- setting a mapping to false will disable it
     ["<esc>"] = false,
-    [":q"] = { "exit()" },
     -- ["i"] = {"<C-\\><C-n>", desc = "Switch to normal mode"},
      -- ["j"] = {"<C-\\><C-n><C-d>", desc = "Scroll up"},
     ["j"] = {"<C-\\><C-n>j", desc = "Scroll up"},

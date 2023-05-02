@@ -1,6 +1,5 @@
 return {
   -- Configure AstroNvim updates
-  -- FIX: TELESCOPE DOES NOT WORK WITH PYTHON3.11
   updater = {
     remote = "origin",     -- remote to use
     channel = "stable",    -- "stable" or "nightly"
@@ -108,21 +107,6 @@ return {
       command = "0r ~/.vim/templates/skeleton.cpp",
     })
 
-    vim.api.nvim_create_augroup("Execute", {})
-    -- vim.api.nvim_create_autocmd("BufEnter *.py", {
-    --   desc = "Exectue python program",
-    --   pattern = "*.py",
-    --   group = "Execute",
-    --   command = "map <buffer> <F2> :w <CR>: exec '!python3' shellescape(@%, 1) <CR>",
-    -- })
-
-    -- vim.api.nvim_create_autocmd("BufEnter *.cpp", {
-    --   desc = "Exectue cpp program",
-    --   pattern = "*.cpp",
-    --   group = "Execute",
-    --   command = "map <buffer> <F2> :w <CR> :!g++ -std=c++20 -Wall -Wextra -pedantic % -o %< && ./%<<CR>",
-    -- })
-    --
     vim.api.nvim_create_autocmd("User AstroFile", {
       desc = "no auto comment after pressing o",
       pattern = "*",
@@ -141,8 +125,7 @@ return {
       command = "VimtexCompile",
     })
     vim.api.nvim_create_autocmd("VimEnter *.md", {
-      -- autocmd VimEnter *.md,*.markdown,*.mdown,*.mkdn,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text,*.Rmd :MarkdownPreview
-      desc = "Compile tex file on opening",
+      desc = "Preview markdown file on opening",
       pattern = {
         "*.md",
         "*.markdown",
@@ -164,9 +147,15 @@ return {
     })
 
     vim.api.nvim_create_autocmd("VimEnter *.uml", {
-      desc = "Preview plantuml file on opening",
+      desc = "Set filetype to plantuml",
       pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "set ft=plantuml",
+    })
+    
+    vim.api.nvim_create_autocmd("VimLeave *.tex", {
+      desc = "Move .pdf to main folder",
+      pattern = "*.tex",
+      command = "silent !mv build/*.pdf .",
     })
   end,
 }

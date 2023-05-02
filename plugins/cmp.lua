@@ -9,15 +9,6 @@ return {
   opts = function(_, opts)
     local cmp = require "cmp"
     local luasnip = require "luasnip"
-
-    -- local function next_item()
-    --   if cmp.visible() then
-    --     cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-    --   else
-    --     cmp.complete()
-    --   end
-    -- end
-
     return require("astronvim.utils").extend_tbl(opts, {
       window = {
         completion = {
@@ -38,6 +29,14 @@ return {
       },
       mapping = {
         ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<C-J>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, -- to fix the c-j not working since update 2/05/23
+        -- ["<c-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        -- ["<C-Space>"] = cmp.mapping.complete(),
+        -- ["<C-e>"] = cmp.mapping.close(),
+        -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        -- ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        -- ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
       },
     })
   end,

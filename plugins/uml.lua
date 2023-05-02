@@ -4,7 +4,7 @@ return{
         event = {"VimEnter *.uml"},
         config = function()
             -- vim.g.plantuml_previewer = "http://www.plantuml.com/plantuml/img/"
-            vim.g.plantuml_previewer#plantuml_jar_path = "/opt/plantuml/plantuml.jar"
+            vim.g.plantuml_previewer_plantuml_jar_path = "/opt/plantuml/plantuml.jar"
         end
     },
     {

@@ -11,20 +11,6 @@ return {
     vim.g.Tex_ViewRule_pdf='sumatraPDF'
     vim.g.vimtex_quickfix_mode = 1
     vim.g.vimtex_compiler_silent = true
-    -- let g:vimtex_compiler_latexmk = {
-    --         \ 'build_dir' : '',
-    --         \ 'callback' : 1,
-    --         \ 'continuous' : 1,
-    --         \ 'executable' : 'latexmk',
-    --         \ 'hooks' : [],
-    --         \ 'options' : [
-    --         \   '-verbose',
-    --         \   '-file-line-error',
-    --         \   '-synctex=1',
-    --         \   '-interaction=nonstopmode',
-    --         \   '-shell-escape',
-    --         \ ],
-    --         \}
     vim.g.vimtex_compiler_latexmk = {
       -- build_dir = "build",
       -- continuous = 1,
@@ -37,17 +23,21 @@ return {
       --   "-file-line-error",
       --   "-outdir=build",
       -- },
-      build_dir = "",
+      build_dir = "build",
       callback = 1,
       continuous = 1,
       executable = "latexmk",
       hooks = {},
       options = {
+        "-pdf",
         "-verbose",
         "-file-line-error",
         "-synctex=1",
         "-interaction=nonstopmode",
-        "-shell-escape",
+        "--shell-escape",
+        -- "-shell-escape",
+        "-outdir=build",
+        -- "-auxdir=build",
       },
     }
   end,
