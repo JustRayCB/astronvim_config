@@ -11,7 +11,7 @@ return {
     vim.g.db_ui_show_database_icon = 1
     vim.g.db_ui_force_echo_notifications = 1
     vim.g.db_ui_win_position = "left"
-    vim.g.db_ui_winwidth = 80
+    vim.g.db_ui_winwidth = 30
 
     vim.g.db_ui_table_helpers = {
       mysql = {
