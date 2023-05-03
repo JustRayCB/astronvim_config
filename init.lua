@@ -1,16 +1,16 @@
 return {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin",     -- remote to use
-    channel = "stable",    -- "stable" or "nightly"
-    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly",    -- branch name (NIGHTLY ONLY)
-    commit = nil,          -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false,  -- skip prompts about breaking changes
+    remote = "origin", -- remote to use
+    channel = "stable", -- "stable" or "nightly"
+    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly", -- branch name (NIGHTLY ONLY)
+    commit = nil, -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false,     -- automatically quit the current session after a successful update
-    remotes = {            -- easily add new remotes to track
+    auto_quit = false, -- automatically quit the current session after a successful update
+    remotes = { -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -31,7 +31,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -41,9 +41,9 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        "lua_ls",  -- Have to disable it because if I save before the workspace is loaded there is a conflict
-        "null-ls",
-        -- "jdtls",   -- Otherwise ther is a conflict with clang_format
+        "lua_ls", -- Have to disable it because if I save before the workspace is loaded there is a conflict
+        -- "null-ls",
+        "jdtls", -- Otherwise ther is a conflict with clang_format
         -- "clang_format"
       },
       timeout_ms = 3200, -- default format timeout
@@ -119,12 +119,12 @@ return {
       command = "execute 'normal! i' | write | edit | execute 'normal! gg=G'",
     })
 
-    vim.api.nvim_create_autocmd("VimEnter *.tex", {
+    vim.api.nvim_create_autocmd("BufEnter *.tex", {
       desc = "Compile tex file on opening",
       pattern = "*.tex",
       command = "VimtexCompile",
     })
-    vim.api.nvim_create_autocmd("VimEnter *.md", {
+    vim.api.nvim_create_autocmd("BufEnter *.md", {
       desc = "Preview markdown file on opening",
       pattern = {
         "*.md",
@@ -140,19 +140,19 @@ return {
       },
       command = "MarkdownPreview",
     })
-    vim.api.nvim_create_autocmd("VimEnter *.uml", {
+    vim.api.nvim_create_autocmd("BufEnter *.uml", {
       desc = "Preview plantuml file on opening",
       pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "silent! PlantumlOpen",
     })
 
-    vim.api.nvim_create_autocmd("VimEnter *.uml", {
+    vim.api.nvim_create_autocmd("BufEnter *.uml", {
       desc = "Set filetype to plantuml",
       pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "set ft=plantuml",
     })
-    
-    vim.api.nvim_create_autocmd("VimLeave *.tex", {
+
+    vim.api.nvim_create_autocmd("BufLeave *.tex", {
       desc = "Move .pdf to main folder",
       pattern = "*.tex",
       command = "silent !mv build/*.pdf .",

@@ -1,5 +1,6 @@
 return {
   "stevearc/overseer.nvim",
+  ft = { "cpp", "python", "java", "make", "sql" },
   cmd = {
     "OverseerOpen",
     "OverseerClose",
@@ -21,7 +22,7 @@ return {
       -- strategy = "terminal",
       strategy = "toggleterm",
       -- Template modules to load
-      templates = { "builtin", "user.cpp", "user.python", "user.java", "user.make", "user.sql"},
+      templates = { "builtin", "user.cpp", "user.python", "user.java", "user.make", "user.sql" },
       -- When true, tries to detect a green color from your colorscheme to use for success highlight
       auto_detect_success_color = true,
       -- Patch nvim-dap to support preLaunchTask and postDebugTask

@@ -1,5 +1,7 @@
 return {
   "cameron-wags/rainbow_csv.nvim",
+  lazy = true,
+  event = { "BufEnter *.csv" },
   config = true,
   ft = {
     "csv",

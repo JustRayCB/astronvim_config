@@ -1,6 +1,7 @@
 return {
   {
     "jay-babu/mason-nvim-dap.nvim",
+    ft = { "cpp", "c", "python", "py", "java", "jav" },
     config = function()
       local mason_registry = require "mason-registry"
       local dap = require "dap"
