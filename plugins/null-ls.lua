@@ -11,9 +11,13 @@ return {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
-      require("null-ls").builtins.diagnostics.sqlfluff.with({
-        extra_args = { "--dialect", "mysql"}, -- change to your dialect
-      }),
+      -- require("null-ls").builtins.diagnostics.sqlfluff.with {
+      --   extra_args = { "--dialect", "mysql" }, -- change to your dialect
+      --   filetypes = { "sql", "mysql" },
+      -- },
+      -- require("null-ls").builtins.completion.luasnip.with {
+      --   filetypes = { "mysql", "sql", "python" },
+      -- },
     }
     return config -- return final config table
   end,

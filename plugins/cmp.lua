@@ -20,6 +20,7 @@ return {
       sources = cmp.config.sources {
         { name = "luasnip", priority = 1750 },
         { name = "nvim_lsp", priority = 1000 },
+        { name = "vim-dadbod-completion", priority = 800 },
         { name = "pandoc_references", priority = 725 },
         { name = "latex_symbols", priority = 700 },
         { name = "emoji", priority = 700 },

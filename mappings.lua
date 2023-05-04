@@ -144,16 +144,22 @@ return {
     ["<leader>fu"] = { "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope for all functions" },
     ["<leader>sa"] = { "<cmd>au! CursorHoldI,CursorHold,BufLeave <buffer> silent w<CR>", desc = "Autosave" },
     ["<F2>"] = { "<cmd>OverseerRun<cr>", desc = "Run a file" },
+    -- ["sql"] = { "<cmd>set ft=sql<cr>", desc = "Set filetype to sql" },
+    ["gbt"] = { "<cmd>GitBlameToggle<cr>", desc = "Toggle GitBlame" },
+    ["gbf"] = { "<cmd>GitBlameOpenFileURL<cr>", desc = "Open the file url in github" },
+    ["gbc"] = { "<cmd>GitBlameOpenCommitURL<cr>", desc = "Open the commit url in github" },
+    ["<C-a>"] = { "ggVG", desc = "Select all the text from a file" },
   },
 
   -- Terminal mode
   t = {
     -- setting a mapping to false will disable it
-    ["<esc>"] = false,
+    ["<esc>"] = { "<C-\\><C-n>", desc = "Switch to normal mode" },
+    ["J"] = { "<C-\\><C-n>", desc = "Switch to normal mode" },
     -- ["i"] = {"<C-\\><C-n>", desc = "Switch to normal mode"},
     -- ["j"] = {"<C-\\><C-n><C-d>", desc = "Scroll up"},
-    ["j"] = { "<C-\\><C-n>j", desc = "Scroll up" },
-    ["k"] = { "<C-\\><C-n>k", desc = "Scroll down" },
+    -- ["j"] = { "<C-\\><C-n>j", desc = "Scroll up" },
+    -- ["k"] = { "<C-\\><C-n>k", desc = "Scroll down" },
   },
 
   -- Visual mode
@@ -169,5 +175,13 @@ return {
     ["<"] = { "<gv^", desc = "Keep visual mode after Indent left" },
     [">"] = { ">gv^", desc = "Keep visual mode after Indent right" },
   },
+
+  -- Insert Mode
   i = {},
+
+  -- Command Mode
+  c = {
+    ["<C-j>"] = { "<C-n>", desc = "Move down in command mode" },
+    ["<C-k>"] = { "<C-p>", desc = "Move up in command mode" },
+  },
 }

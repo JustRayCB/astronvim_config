@@ -5,13 +5,15 @@ return {
     "kristijanhusak/vim-dadbod-completion",
     "tpope/vim-dotenv",
   },
-  keys = { { "<leader><leader>db", ":tab DBUI<cr>", desc = "Open Database client" } },
+  keys = { { "<leader><leader>db", "<cmd>tab DBUI<cr>", desc = "Open Database client" } },
   init = function()
     vim.g.db_ui_use_nerd_fonts = 1
     vim.g.db_ui_show_database_icon = 1
     vim.g.db_ui_force_echo_notifications = 1
     vim.g.db_ui_win_position = "left"
     vim.g.db_ui_winwidth = 30
+    vim.g.db_ui_save_location = vim.fn.getcwd()
+    vim.g.db_ui_execute_on_save = 0
 
     vim.g.db_ui_table_helpers = {
       mysql = {
@@ -22,6 +24,10 @@ return {
         Describe = "PRAGMA table_info({table})",
       },
     }
+    --new mappings for dadbod ui
+    -- new keymaps <leader>M, that execute <leader>S command  in visual mode
+    vim.api.nvim_set_keymap("v", "<leader>s", "<leader>S", { noremap = false })
+    vim.api.nvim_set_keymap("n", "<leader>s", "<leader>S", { noremap = false })
 
     vim.g.db_ui_icons = {
       expanded = {

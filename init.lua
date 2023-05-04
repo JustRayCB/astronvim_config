@@ -37,6 +37,8 @@ return {
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
+          "sql",
+          "mysql",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -45,6 +47,7 @@ return {
         -- "null-ls",
         "jdtls", -- Otherwise ther is a conflict with clang_format
         -- "clang_format"
+        "sqlfluff",
       },
       timeout_ms = 3200, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -150,6 +153,19 @@ return {
       desc = "Set filetype to plantuml",
       pattern = { "*.uml", "*.plantuml", "*.puml" },
       command = "set ft=plantuml",
+    })
+
+    vim.api.nvim_create_autocmd({ "BufEnter *.mysql", "BufNewFile *.mysql" }, {
+      desc = "Set filetype to plantuml",
+      pattern = { "*.mysql" },
+      command = "set ft=sql",
+    })
+
+    vim.api.nvim_create_autocmd({ "BufNewFile *", "BufNew *" }, {
+      desc = "Set filetype to sql",
+      pattern = { "*" },
+      -- command = "if &filetype == 'mysql' | echo 'salut' | endif",
+      command = "if &filetype == 'mysql' | set ft=sql |endif",
     })
 
     vim.api.nvim_create_autocmd("BufLeave *.tex", {

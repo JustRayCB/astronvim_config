@@ -11,6 +11,7 @@ return {
         "pyright",
         "jdtls",
         "clangd",
+        "sqlls",
       },
       automatic_installation = true,
     },
