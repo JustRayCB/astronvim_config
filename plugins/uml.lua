@@ -10,10 +10,12 @@ return {
   },
   {
     "tyru/open-browser.vim",
-    event = { "VimEnter *.uml" },
+    -- event = { "VimEnter *.uml" },
+    ft = { "plantuml", "uml", "puml" },
   },
   {
     "aklt/plantuml-syntax",
-    event = { "VimEnter *.uml" },
+    ft = { "plantuml", "uml", "puml" },
+    -- event = { "VimEnter *.uml" },
   },
 }

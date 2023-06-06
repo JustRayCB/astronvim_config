@@ -97,15 +97,15 @@ return {
       end,
       desc = "Vertical split buffer from tabline",
     },
-    ["<leader><leader>c"] = {
-      function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
-      desc = "Comment line",
-    },
+    -- ["<leader><leader>c"] = {
+    --   function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
+    --   desc = "Comment line",
+    -- },
     ["<leader><leader>t"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
     ["<c-c>"] = { "y", desc = "Copy to clipboard" },
     ["a"] = { "<c-y>", desc = "Move the window one line up" },
     ["f"] = { "<c-e>", desc = "Move the window one line to the bottom" },
-    ["m"] = { "w", desc = "one word to the left" },
+    -- ["m"] = { "w", desc = "one word to the left" },
     ["<leader><leader>="] = {
       "<cmd>vsp | Telescope find_files<cr>",
       desc = "Open a split tab and choose file with telescope",
@@ -147,14 +147,15 @@ return {
     -- ["sql"] = { "<cmd>set ft=sql<cr>", desc = "Set filetype to sql" },
     ["gbt"] = { "<cmd>GitBlameToggle<cr>", desc = "Toggle GitBlame" },
     ["gbf"] = { "<cmd>GitBlameOpenFileURL<cr>", desc = "Open the file url in github" },
-    ["gbc"] = { "<cmd>GitBlameOpenCommitURL<cr>", desc = "Open the commit url in github" },
+    ["gbco"] = { "<cmd>GitBlameOpenCommitURL<cr>", desc = "Open the commit url in github" },
     ["<C-a>"] = { "ggVG", desc = "Select all the text from a file" },
   },
 
   -- Terminal mode
   t = {
     -- setting a mapping to false will disable it
-    ["<esc>"] = { "<C-\\><C-n>", desc = "Switch to normal mode" },
+    -- ["<esc>"] = { "<C-\\><C-n>", desc = "Switch to normal mode" },
+    ["<esc>"] = false,
     ["J"] = { "<C-\\><C-n>", desc = "Switch to normal mode" },
     -- ["i"] = {"<C-\\><C-n>", desc = "Switch to normal mode"},
     -- ["j"] = {"<C-\\><C-n><C-d>", desc = "Scroll up"},
@@ -165,13 +166,13 @@ return {
   -- Visual mode
   v = {
     ["<leader>c"] = false,
-    ["<leader><leader>c"] = {
-      "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
-      desc = "Toggle comment line",
-    },
+    -- ["<leader><leader>c"] = {
+    --   "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+    --   desc = "Toggle comment line",
+    -- },
     ["y"] = { "ygv<esc>", desc = "Make the cursor not move after yank" },
     ["<c-c>"] = { "y", desc = "Copy to clipboard" },
-    ["m"] = { "w", desc = "one word to the left" },
+    -- ["m"] = { "w", desc = "one word to the left" },
     ["<"] = { "<gv^", desc = "Keep visual mode after Indent left" },
     [">"] = { ">gv^", desc = "Keep visual mode after Indent right" },
   },

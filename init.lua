@@ -17,14 +17,12 @@ return {
     },
   },
   -- Set colorscheme to use
-  colorscheme = "tokyonight",
-  -- colorscheme = "catppuccin",
-  -- colorscheme = "oxocarbon",
-  -- colorscheme = "rose-pine",
+  colorscheme = "tokyonight-moon",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
     underline = true,
+    update_in_insert = false,
   },
   lsp = {
     -- customize lsp formatting options
@@ -34,20 +32,23 @@ return {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
+          -- "java",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
           "sql",
           "mysql",
+          "java",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         "lua_ls", -- Have to disable it because if I save before the workspace is loaded there is a conflict
-        -- "null-ls",
+        "null-ls",
         "jdtls", -- Otherwise ther is a conflict with clang_format
-        -- "clang_format"
+        -- "clang_format",
         "sqlfluff",
+        "clangd"
       },
       timeout_ms = 3200, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -122,7 +123,7 @@ return {
       command = "execute 'normal! i' | write | edit | execute 'normal! gg=G'",
     })
 
-    vim.api.nvim_create_autocmd("BufEnter *.tex", {
+    vim.api.nvim_create_autocmd("VimEnter *.tex", {
       desc = "Compile tex file on opening",
       pattern = "*.tex",
       command = "VimtexCompile",
@@ -168,10 +169,22 @@ return {
       command = "if &filetype == 'mysql' | set ft=sql |endif",
     })
 
-    vim.api.nvim_create_autocmd("BufLeave *.tex", {
+    vim.api.nvim_create_autocmd({ "BufLeave *.tex", "VimLeave *.tex" }, {
       desc = "Move .pdf to main folder",
       pattern = "*.tex",
       command = "silent !mv build/*.pdf .",
+    })
+
+    vim.api.nvim_create_autocmd({ "BufWritePost *.java" }, {
+      desc = "Format java file on save",
+      pattern = "*.java",
+      command = "silent! !clang-format -i %",
+    })
+    
+    vim.api.nvim_create_autocmd({ "BufWritePost *.py" }, {
+      desc = "Format python file on save",
+      pattern = "*.py",
+      command = "silent! !black %",
     })
   end,
 }

@@ -11,7 +11,26 @@ return {
       vim.g.Tex_DefaultTargetFormat = "pdf"
       vim.g.Tex_ViewRule_pdf = "sumatraPDF"
       vim.g.vimtex_quickfix_mode = 1
+      vim.g.vimtex_quickfix_open_on_warning = 0
       vim.g.vimtex_compiler_silent = true
+      vim.api.nvim_set_keymap("n", "toc", "<cmd>VimtexTocOpen<cr>", { noremap = true, silent = true })
+      -- vim.g.vimtex_toc_width = 10
+      vim.g.vimtex_toc_config = {
+        split_width = 30,
+        layer_status = {
+          content = 1,
+          label = 0,
+          todo = 1,
+          include = 1,
+        },
+        show_help = 0,
+        -- hide help 
+        -- split_pos = "right",
+        -- toc_open_cmd = "30vnew",
+        -- toc_close_cmd = "q",
+        -- toc_open_cmd_conceal = "leftabove vertical 30vnew",
+        -- toc_close_cmd_conceal = "q",
+      }
       vim.g.vimtex_compiler_latexmk = {
         -- build_dir = "build",
         -- continuous = 1,
@@ -27,13 +46,14 @@ return {
         build_dir = "build",
         callback = 1,
         continuous = 1,
+        -- executable = "latexmk",
         executable = "latexmk",
         hooks = {},
         options = {
           "-pdf",
           "-verbose",
           "-file-line-error",
-          "-synctex=1",
+          "-synctex=0",
           "-interaction=nonstopmode",
           "--shell-escape",
           -- "-shell-escape",

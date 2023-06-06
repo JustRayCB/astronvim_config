@@ -7,10 +7,10 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "jedi_language_server",
-        "pyright",
+        -- "jedi_language_server",
+        -- "pyright",
         "jdtls",
-        "clangd",
+        -- "clangd",
         "sqlls",
       },
       automatic_installation = true,
@@ -22,13 +22,12 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       ensure_installed = {
-        "prettier",
         "stylua",
-        "pylint",
-        "pydocstyle",
-        "black",
-        "clang-format",
-        "prettier",
+        -- "pylint",
+        -- "pydocstyle",
+        -- "black",
+        -- "clang-format",
+        -- "prettier",
         "latexindent",
         "markdown-toc",
         "markdownlint",

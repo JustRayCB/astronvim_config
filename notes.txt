@@ -32,6 +32,8 @@ zc                Close the current fold
 zo                Open the current fold
 za                Toggle the current fold
 zp                See inside the current fold
+zr                Open all folds
+zm                Close all folds
 ys                To add a surround
 ds                To delete a surround
 cs                To change a surround
@@ -46,3 +48,9 @@ dst               Delete html tag
 yswf              Surround the word under the cursor with a function
 csf               Change the function name
 dsf               Delete the function name
+gbt               Toggle  git blame
+gbf               Open file in github
+gbco              Open commit url
+:sort u           Sort the lines and remove duplicates
+:%s/old/new/gc    Replace old by new with confirmation (remove c without confifmation)
+:%s/string//gn    Count the number of occurences of string

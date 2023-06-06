@@ -45,4 +45,8 @@ return {
     event = "User AstroGitFile",
     init = function() vim.g.gitblame_enabled = false end,
   },
+  {
+    "alec-gibson/nvim-tetris",
+    cmd = { "Tetris" },
+  },
 }

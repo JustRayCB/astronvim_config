@@ -189,7 +189,8 @@ return {
       template_timeout = 0,
       -- Cache template provider results if the provider takes longer than this to run.
       -- Time is in ms. Set to 0 to disable caching.
-      template_cache_threshold = 100,
+      -- template_cache_threshold = 100,
+      template_cache_threshold = 0,
       -- Configure where the logs go and what level to use
       -- Types are "echo", "notify", and "file"
       log = {
