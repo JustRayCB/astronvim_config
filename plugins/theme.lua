@@ -53,7 +53,7 @@ return {
   },
   { import = "astrocommunity.colorscheme.catppuccin" },
   {
-    "catppuccin/nvim",
+    "catppuccin",
     lazy = false,
   },
   { import = "astrocommunity.colorscheme.oxocarbon-nvim" },
