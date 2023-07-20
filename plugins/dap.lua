@@ -47,8 +47,8 @@ return {
         id = "cppdbg",
         type = "executable",
         -- command = mason_registry.get_package("vscode-cpptools"):get_install_path() .. "/debugAdapters/OpenDebugAD7",
-        -- command = vim.fn.exepath "OpenDebugAD7",
-        command = "/home/cbr/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+        command = vim.fn.exepath "OpenDebugAD7",
+        -- command = "/home/cbr/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
       }
       dap.adapters.codelldb = {
         type = "server",
@@ -67,6 +67,7 @@ return {
           request = "launch",
           program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
           cwd = "${workspaceFolder}",
+          -- cwd = vim.fn.getcwd(),
           stopAtEntry = true,
         },
         {

@@ -5,7 +5,7 @@ return {
     -- relativenumber = false, -- sets vim.opt.relativenumber
     number = true, -- sets vim.opt.number
     spell = false, -- sets vim.opt.spell
-    signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+    signcolumn = "auto:1-5", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
     cmdheight = 2, -- size of command line
     virtualedit = "onemore", -- allow the cursor to go to the end of the line

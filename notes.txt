@@ -54,3 +54,7 @@ gbco              Open commit url
 :sort u           Sort the lines and remove duplicates
 :%s/old/new/gc    Replace old by new with confirmation (remove c without confifmation)
 :%s/string//gn    Count the number of occurences of string
+gU                Upper case the visual selection
+gu                Lowercase the visual selection
+guu               lowercase the current line
+GUU               UpperCase THE CURRENT LINE

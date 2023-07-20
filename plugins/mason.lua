@@ -7,10 +7,10 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        -- "jedi_language_server",
+        "jedi_language_server",
         -- "pyright",
         "jdtls",
-        -- "clangd",
+        "clangd",
         "sqlls",
       },
       automatic_installation = true,

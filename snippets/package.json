@@ -19,6 +19,13 @@
       {
         "language": "tex",
         "path": "./tex.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "md"
+        ],
+        "path": "./markdown.json"
       }
     ]
   }

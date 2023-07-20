@@ -49,4 +49,11 @@ return {
     "alec-gibson/nvim-tetris",
     cmd = { "Tetris" },
   },
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    init = function ()
+      vim.g.VM_mouse_mappings = true
+    end
+  }
 }

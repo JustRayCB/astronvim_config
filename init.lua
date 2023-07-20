@@ -17,7 +17,8 @@ return {
     },
   },
   -- Set colorscheme to use
-  colorscheme = "tokyonight-moon",
+  -- colorscheme = "tokyonight-moon",
+  colorscheme = "astrotheme",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -26,6 +27,10 @@ return {
   },
   lsp = {
     -- customize lsp formatting options
+    diagnostics = { -- configure formatting diagnostics
+      virtual_text = false, -- show virtual diagnostics
+      underline = true, -- show underline diagnostics
+    },
     formatting = {
       -- control auto formatting on save
       format_on_save = {
@@ -38,7 +43,7 @@ return {
           -- "python",
           "sql",
           "mysql",
-          "java",
+          -- "java",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -48,7 +53,6 @@ return {
         "jdtls", -- Otherwise ther is a conflict with clang_format
         -- "clang_format",
         "sqlfluff",
-        "clangd"
       },
       timeout_ms = 3200, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -61,6 +65,20 @@ return {
     },
     config = {
       clangd = {
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--suggest-missing-includes",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--fallback-style=Chromium",
+        },
+        init_options = {
+          clangdFileStatus = true,
+          usePlaceholders = true,
+          completeUnimported = true,
+        },
         capabilities = { offsetEncoding = "utf-8" },
       },
     },
@@ -80,17 +98,18 @@ return {
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
+    vim.filetype.add {
+      -- extension = {
+      --   foo = "fooscript",
+      -- },
+      -- filename = {
+      --   ["Foofile"] = "fooscript",
+      -- },
+      -- pattern = {
+      --   ["~/%.config/foo/.*"] = "fooscript",
+      -- },
+      sql = "mysql"
+    }
     -- vim.api.nvim_create_autocmd("BufEnter *.py", {
     --   desc = "Execute python File while pressing F2",
     --   pattern = "python",
@@ -128,27 +147,27 @@ return {
       pattern = "*.tex",
       command = "VimtexCompile",
     })
-    vim.api.nvim_create_autocmd("BufEnter *.md", {
-      desc = "Preview markdown file on opening",
-      pattern = {
-        "*.md",
-        "*.markdown",
-        "*.mdown",
-        "*.mkdn",
-        "*.mkd",
-        "*.mdwn",
-        "*.mdtxt",
-        "*.mdtext",
-        "*.text",
-        "*.Rmd",
-      },
-      command = "MarkdownPreview",
-    })
-    vim.api.nvim_create_autocmd("BufEnter *.uml", {
-      desc = "Preview plantuml file on opening",
-      pattern = { "*.uml", "*.plantuml", "*.puml" },
-      command = "silent! PlantumlOpen",
-    })
+    -- vim.api.nvim_create_autocmd("BufEnter *.md", {
+    --   desc = "Preview markdown file on opening",
+    --   pattern = {
+    --     "*.md",
+    --     "*.markdown",
+    --     "*.mdown",
+    --     "*.mkdn",
+    --     "*.mkd",
+    --     "*.mdwn",
+    --     "*.mdtxt",
+    --     "*.mdtext",
+    --     "*.text",
+    --     "*.Rmd",
+    --   },
+    --   command = "MarkdownPreview",
+    -- })
+    -- vim.api.nvim_create_autocmd("BufEnter *.uml", {
+    --   desc = "Preview plantuml file on opening",
+    --   pattern = { "*.uml", "*.plantuml", "*.puml" },
+    --   command = "silent! PlantumlOpen",
+    -- })
 
     vim.api.nvim_create_autocmd("BufEnter *.uml", {
       desc = "Set filetype to plantuml",
@@ -156,11 +175,11 @@ return {
       command = "set ft=plantuml",
     })
 
-    vim.api.nvim_create_autocmd({ "BufEnter *.mysql", "BufNewFile *.mysql" }, {
-      desc = "Set filetype to plantuml",
-      pattern = { "*.mysql" },
-      command = "set ft=sql",
-    })
+    -- vim.api.nvim_create_autocmd({ "BufEnter *.mysql", "BufNewFile *.mysql" }, {
+    --   desc = "Set filetype to plantuml",
+    --   pattern = { "*.mysql" },
+    --   command = "set ft=sql",
+    -- })
 
     vim.api.nvim_create_autocmd({ "BufNewFile *", "BufNew *" }, {
       desc = "Set filetype to sql",
@@ -175,6 +194,12 @@ return {
       command = "silent !mv build/*.pdf .",
     })
 
+    -- vim.api.nvim_create_autocmd({ "BufWritePost *.java", "BufWritePost *. cpp" }, {
+    --   desc = "Format java/cpp file on save",
+    --   pattern = { "*.java", "*.cpp" },
+    --   command = "silent! !clang-format -i %",
+    -- })
+    
     vim.api.nvim_create_autocmd({ "BufWritePost *.java" }, {
       desc = "Format java file on save",
       pattern = "*.java",
