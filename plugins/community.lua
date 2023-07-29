@@ -5,5 +5,6 @@ return {
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.utility.noice-nvim" },
-  {import = "astrocommunity.utility.transparent-nvim"}
+  {import = "astrocommunity.utility.transparent-nvim"},
+  {import = "astrocommunity.code-runner.compiler-nvim"}
 }

@@ -209,7 +209,7 @@ return {
     vim.api.nvim_create_autocmd({ "BufWritePost *.py" }, {
       desc = "Format python file on save",
       pattern = "*.py",
-      command = "silent! !black %",
+      command = "silent! !black --include pyproject.toml %",
     })
   end,
 }
