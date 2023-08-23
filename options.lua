@@ -25,7 +25,7 @@ return {
     undodir = "/home/cbr/.local/share/nvim/tmp/undodir", -- have to do like that because of the ~
     backupdir = "/home/cbr/.local/share/nvim/tmp/backupdir",
     directory = "/home/cbr/.local/share/nvim/tmp/swap",
-    autochdir = true, -- change directory to current file
+    autochdir = false, -- change directory to current file
     -- linebreak = false;
     preserveindent = false,
   },
