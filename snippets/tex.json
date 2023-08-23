@@ -1,4 +1,29 @@
 {
+    "Bold" : {
+        "prefix": [ "b", "bold" ],
+        "body": [
+            "\\textbf{$1}"
+        ],
+        "description": "Bold"
+        
+    },
+
+    "Bold italics": {
+        "prefix": [ "bi", "bolditalics" ],
+        "body": [
+            "\\textbf{\\textit{$1}}"
+        ],
+        "description": "Bold italics"
+    },
+
+    "Italics": {
+        "prefix": [ "i", "italics" ],
+        "body": [
+            "\\textit{$1}"
+        ],
+        "description": "Italics"
+    },
+    
     "Convention": {
         "prefix": [ "convention", "conv" ],
         "body": [
@@ -42,9 +67,9 @@
         "prefix": [ "exs","examples" ],
         "body": [
             "\\begin{examples}\\leavevmode",
-            "\\begin{enumerate}",
-            "\t$1",
-            "\\end{enumerate}",
+            "\t\\begin{enumerate}",
+            "\t\t$1",
+            "\t\\end{enumerate}",
             "\\end{examples}"
         ],
         "description": "Example tcolorbox"
@@ -61,7 +86,7 @@
     },
 
     "Proof": {
-        "prefix": [ "pr", "proof" ],
+        "prefix": [ "pr", "pro", "proof" ],
         "body": [
             "\\begin{myproof}{$1}{$2}",
             "\t$3",
@@ -240,6 +265,16 @@
             "\\end{minipage}"
         ],
         "description": "Minipage"
+    },
+
+    "Warning": {
+        "prefix": ["warn", "warning" ],
+        "body": [
+            "\\begin{warning}",
+            "\t$1",
+            "\\end{warning}"
+        ],
+        "description": "Warning"
     }
 
 }
