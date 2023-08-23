@@ -11,7 +11,7 @@ return {
       vim.g.Tex_DefaultTargetFormat = "pdf"
       vim.g.Tex_ViewRule_pdf = "sumatraPDF"
       vim.g.vimtex_quickfix_mode = 1
-      vim.g.vimtex_quickfix_open_on_warning = 0
+      vim.g.vimtex_quickfix_open_on_warning = 1
       vim.g.vimtex_compiler_silent = true
       vim.api.nvim_set_keymap("n", "toc", "<cmd>VimtexTocOpen<cr>", { noremap = true, silent = true })
       -- vim.g.vimtex_toc_width = 10
@@ -23,7 +23,7 @@ return {
           todo = 1,
           include = 1,
         },
-        show_help = 0,
+        show_help = 1,
         -- hide help 
         -- split_pos = "right",
         -- toc_open_cmd = "30vnew",
@@ -51,21 +51,22 @@ return {
         hooks = {},
         options = {
           "-pdf",
+          "-pvc",
           "-verbose",
           "-file-line-error",
           "-synctex=0",
           "-interaction=nonstopmode",
           "--shell-escape",
           -- "-shell-escape",
-          "-outdir=build",
-          -- "-auxdir=build",
+          -- "--output-directory=build",
+          "-auxdir=build",
         },
       }
     end,
   },
   {
     "aspeddro/pandoc.nvim",
-    event = { "VimEnter *.md", "VimEnter *.tex" },
+    event = { "VimEnter *.md" },
     config = function()
       -- code
       require("pandoc").setup {
