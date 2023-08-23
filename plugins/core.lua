@@ -25,6 +25,7 @@ return {
       return opts
     end,
   },
+  {"echasnovski/mini.bufremove", enabled = false}
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
