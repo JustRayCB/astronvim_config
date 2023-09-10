@@ -33,7 +33,7 @@ return {
           lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
           input = {}, -- Used by input()
-          lua = false, -- to disable a format, set to `false`
+          -- lua = false, -- to disable a format, set to `false`
         },
       },
       lsp = {
@@ -55,6 +55,15 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
       },
+      popupmenu = {
+        -- BUG: Create an ui error 10/09/2023
+        enabled = false, -- enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
+        backend = "nui", -- backend to use to show regular cmdline completions
+        ---@type NoicePopupmenuItemKind|false
+        -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+        kind_icons = {}, -- set to `false` to disable icons
+      },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
@@ -63,7 +72,7 @@ return {
         lsp_doc_border = false, -- add a border to hover docs and signature help
       },
     },
-    init = function() vim.g.lsp_handlers_enabled = false end,
+    init = function() vim.g.lsp_handlers_enabled = true end,
   },
   {
     "folke/edgy.nvim",
