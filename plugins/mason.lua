@@ -30,7 +30,7 @@ return {
         -- "prettier",
         "latexindent",
         "markdown-toc",
-        "markdownlint",
+        -- "markdownlint",
         "sqlfmt",
       },
       automatic_installation = true,
