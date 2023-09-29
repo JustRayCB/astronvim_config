@@ -34,6 +34,18 @@ return {
             throttle = 1000 / 30, -- frequency to update lsp progress message
             view = "mini",
           },
+          signature = {
+            enabled = false,
+            auto_open = {
+              enabled = true,
+              trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+              luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+              throttle = 50, -- Debounce lsp signature help request by 50ms
+            },
+            view = nil, -- when nil, use defaults from documentation
+            ---@type NoiceViewOptions
+            opts = {}, -- merged with defaults from documentation
+        },
         },
         presets = {
           bottom_search = true, -- use a classic bottom cmdline for search
@@ -50,8 +62,24 @@ return {
           -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
           kind_icons = {}, -- set to `false` to disable icons
         },
-
-
+        routes = {
+          {
+            filter = {
+              event = "notify",
+              find = "No information available",
+            },
+            opts = { skip = true},
+            desc = "Skip 'No information available' messages from LSP",
+          },
+          {
+            filter = {
+              -- event = "message",
+              find = "Paused in thread 1 due to breakpoint",
+            },
+            opts = { skip = true},
+            desc = "Skip 'Paused in' messages from LSP",
+          }
+        }
       })
     end,
     init = function() vim.g.lsp_handlers_enabled = false end,
