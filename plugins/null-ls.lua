@@ -18,13 +18,13 @@ return {
       null_ls.builtins.formatting.clang_format.with{
         filetypes = {"java"},
       },
-      null_ls.builtins.diagnostics.mypy.with {
-        extra_args = { "--check-untyped-defs", "--ignore-missing-imports", "--install-types"},
-        -- --non-interactive
-        filetypes = { "python" },
-        -- method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-        -- timeout = 500,
-      },
+      -- null_ls.builtins.diagnostics.mypy.with {
+      --   extra_args = { "--check-untyped-defs", "--ignore-missing-imports", "--install-types"},
+      --   -- --non-interactive
+      --   filetypes = { "python" },
+      --   -- method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+      --   -- timeout = 500,
+      -- },
 
       null_ls.builtins.diagnostics.pydocstyle.with {
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
