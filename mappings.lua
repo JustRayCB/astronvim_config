@@ -9,6 +9,7 @@ return {
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
+    ["<leader>bp"] = false,
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -149,6 +150,8 @@ return {
     ["gbf"] = { "<cmd>GitBlameOpenFileURL<cr>", desc = "Open the file url in github" },
     ["gbco"] = { "<cmd>GitBlameOpenCommitURL<cr>", desc = "Open the commit url in github" },
     ["<C-a>"] = { "ggVG", desc = "Select all the text from a file" },
+    ["<leader>ne"] = { "<cmd>NoiceEnable<cr>", desc = "Enable Noice"},
+    ["<leader>nd"] = { "<cmd>NoiceDisable<cr>", desc = "Disable Noice"}
   },
 
   -- Terminal mode
