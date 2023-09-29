@@ -133,7 +133,7 @@ return {
             map("i", "<CR>", function()
               local picker = vim.fn.bufnr()
               local selection = require("telescope.actions.state").get_selected_entry()
-              vim.fn.execute("silent !wslview " .. selection.path)
+              vim.fn.execute("silent !wslview '" .. selection.path .. "'")
               require("telescope.actions").close(picker)
             end)
             return true
