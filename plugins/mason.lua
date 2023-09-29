@@ -7,11 +7,12 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "jedi_language_server",
+        -- "jedi_language_server",
         -- "pyright",
         "jdtls",
         "clangd",
         "sqlls",
+        -- "ruff_lsp"
       },
       automatic_installation = true,
     },
@@ -42,7 +43,7 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
       ensure_installed = {
-        "python",
+        -- "python",
         "javadbg",
         "cpptools",
         "codelldb",
@@ -50,7 +51,7 @@ return {
         "java-debug-adapter",
         "java-test",
       },
-      automatic_setup = true,
+      -- automatic_setup = true,
       automatic_installation = true,
     },
   },
